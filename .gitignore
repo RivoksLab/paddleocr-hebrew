@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Local model downloads (large ONNX come from the Hugging Face Hub)
+hebrew-ocr-models/
+*.pdparams
+*.pdopt
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
