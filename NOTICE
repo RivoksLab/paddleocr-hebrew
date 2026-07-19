@@ -1,0 +1,18 @@
+paddleocr-hebrew
+Copyright 2026 paddleocr-hebrew contributors
+
+This product includes model weights that were fine-tuned from pre-trained
+models released by the PaddleOCR project (https://github.com/PaddlePaddle/PaddleOCR),
+which are licensed under the Apache License, Version 2.0.
+
+Base models the recognizers/detectors were derived from:
+  - PP-OCRv5 mobile/server detection (DBNet, PPLCNetV3)
+  - PP-OCRv5 server/mobile recognition (PPHGNetV2-B4, PPLCNetV3)
+  - PP-OCRv6 medium recognition (PPLCNetV4)
+  - SVTRv2 recognition (SVTR_HGNet, CTC + NRTR MultiHead)
+
+The Hebrew fine-tunes, the 120-character Hebrew charset, the inference/packaging
+code in this repository, and the split-ONNX NRTR host-loop deployment are
+original work of the paddleocr-hebrew contributors, released under Apache-2.0.
+
+PaddleOCR is Copyright (c) PaddlePaddle Authors, Apache License 2.0.
