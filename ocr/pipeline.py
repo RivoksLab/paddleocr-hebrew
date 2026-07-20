@@ -48,7 +48,36 @@ def render_page(path, dpi=150, page=1):
 
 
 class HebrewOCR:
-    """End-to-end Hebrew page OCR: DBNet word detector + Plan-E cascade recognizer."""
+    """End-to-end Hebrew page OCR: DBNet detector + Plan-E cascade recognizer.
+
+    Two pipelines, same code + same recognizer, only the detector differs:
+
+      HebrewOCR.word(models_dir)   # DEFAULT, flagship. Word-level detection.
+                                   # Faster AND more accurate at page level
+                                   # (7.56% page-CER, 4.95 s/page on Jetson).
+      HebrewOCR.line(models_dir)   # Line-level detection. Slower + a bit less
+                                   # accurate on clean pages (10.36%, 6.33 s), but
+                                   # WINS on degraded scans / dense hard layouts
+                                   # where word detection over-fragments.
+
+    Or construct directly and pass your own `det` ONNX + thresholds.
+    """
+
+    @classmethod
+    def word(cls, models_dir, **kw):
+        """Flagship word-level pipeline (the default; recommended)."""
+        kw.setdefault("det", "word-det/det.onnx")
+        kw.setdefault("det_thresh", 0.40)
+        kw.setdefault("det_unclip", 1.3)
+        return cls(models_dir, **kw)
+
+    @classmethod
+    def line(cls, models_dir, **kw):
+        """Line-level pipeline — for degraded scans / hard layouts (see class doc)."""
+        kw.setdefault("det", "line-det/det.onnx")
+        kw.setdefault("det_thresh", 0.30)
+        kw.setdefault("det_unclip", 1.8)
+        return cls(models_dir, **kw)
 
     def __init__(self, models_dir, *,
                  det="word-det/det.onnx",

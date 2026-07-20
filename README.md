@@ -80,6 +80,24 @@ pages (see benchmark). The recognizer is in
 [`ocr/plan_e_rec.py`](ocr/plan_e_rec.py); the orchestrator in
 [`ocr/pipeline.py`](ocr/pipeline.py).
 
+### Two pipelines (same code + recognizer, different detector)
+
+```python
+ocr = HebrewOCR.word(models_dir)   # default, flagship
+ocr = HebrewOCR.line(models_dir)   # line detector
+```
+
+| pipeline | page-CER | s/page (Jetson) | use it when |
+|---|---:|---:|---|
+| **`word`** (default) | **7.56%** | **4.95** | almost always — faster **and** more accurate |
+| `line` | 10.36% | 6.33 | degraded scans / dense hard layouts where word boxes over-fragment |
+
+`line` is **not** faster (fewer rec calls, but each is a wide line crop; the word
+detector's forward pass is also cheaper). Its edge is robustness on hard layouts —
+and, because the recognizer reads a whole line's BiDi in one pass, it keeps
+mixed Hebrew+Latin word order without post-hoc reordering. `quickstart.py`
+takes `--pipeline word|line`.
+
 ---
 
 ## Models
