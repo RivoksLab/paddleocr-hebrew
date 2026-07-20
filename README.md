@@ -175,6 +175,21 @@ Two techniques we think are worth reusing (writeup in
 - [docs/FINDINGS.md](docs/FINDINGS.md) — what we learned (including the negative results)
 - [eval/EVAL_RESULTS.md](eval/EVAL_RESULTS.md) · [eval/run_eval.md](eval/run_eval.md) — benchmark + how to reproduce
 
+## Fine-tuning & collaboration
+
+The models are released as **ONNX** — inference-ready and portable (CPU, CUDA,
+Jetson) from one set of files. ONNX is not a compromise here: on CPU it runs
+~7× faster than native PaddlePaddle, on Jetson it's the only thing that runs
+(no Paddle aarch64 wheel), and for TensorRT speed on GPU you can point
+onnxruntime's TensorRT execution provider at these same `.onnx` files — no
+extra artifacts needed.
+
+The Paddle training weights (`.pdparams`) and training configs are **not
+published** — ONNX is all you need to run the models. If you want to **fine-tune
+on your own Hebrew data, adapt the charset, or collaborate**, please open an
+issue / discussion on this repo or reach out: **yana@elixrbio.com**. Happy to
+help and to grow this together.
+
 ## License
 
 Apache-2.0 (code and model weights). The recognizers are finetuned from
