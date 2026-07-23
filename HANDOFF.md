@@ -6,10 +6,9 @@ session). Two artifacts:
 - **GitHub repo** (code + docs + small models): `/mnt/mydrive/Projects/paddleocr-hebrew/`
 - **Hugging Face model repo** (all ONNX weights): `/mnt/mydrive/Projects/paddleocr-hebrew-hf/`
 
-> Placeholders to confirm first: the READMEs use `RW-Elixr` as both the GitHub
-> owner and the HF namespace. If your **Hugging Face** username differs, change it
-> in `README.md`, `models/README.md`, `examples/quickstart.py` (`HF_REPO`), and the
-> HF `README.md` before pushing.
+> Namespaces (confirmed 2026-07-23): GitHub owner = `RW-Elixr`, Hugging Face
+> namespace = `RW`. All READMEs, `examples/quickstart.py` (`HF_REPO`), and the
+> HF `README.md` already use these.
 
 ## 1. GitHub (create private, then push)
 
@@ -34,7 +33,7 @@ pip install huggingface_hub
 huggingface-cli login                              # paste an HF write token
 huggingface-cli repo create paddleocr-hebrew --type model --private
 cd /mnt/mydrive/Projects/paddleocr-hebrew-hf
-huggingface-cli upload RW-Elixr/paddleocr-hebrew . . --repo-type model
+huggingface-cli upload RW/paddleocr-hebrew . . --repo-type model
 ```
 
 Uploads ~370 MB (7 model folders + shared charset + cards + md5sums). Make the HF
@@ -43,7 +42,7 @@ repo public when ready. The GitHub links to the HF repo will then resolve.
 ## 3. Verify after push
 
 - GitHub: clone fresh, `pip install -e .`, `python examples/quickstart.py --cpu <image>`.
-- HF: `huggingface-cli download RW-Elixr/paddleocr-hebrew --include "server-svtrv2/*"`
+- HF: `huggingface-cli download RW/paddleocr-hebrew --include "server-svtrv2/*"`
   and check the md5s against each `md5sums.txt`.
 
 ## What's in the release

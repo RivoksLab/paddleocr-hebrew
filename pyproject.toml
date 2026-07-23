@@ -30,7 +30,7 @@ gpu = ["onnxruntime-gpu>=1.17"]
 
 [project.urls]
 Homepage = "https://github.com/RW-Elixr/paddleocr-hebrew"
-Models = "https://huggingface.co/RW-Elixr/paddleocr-hebrew"
+Models = "https://huggingface.co/RW/paddleocr-hebrew"
 
 [tool.setuptools]
 packages = ["ocr"]

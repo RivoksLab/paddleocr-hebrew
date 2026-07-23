@@ -13,7 +13,7 @@ Each model has a `MODEL_CARD.md` + `md5sums.txt`.
 | [`mobile-word/`](mobile-word) | `rec.onnx` | 7.4 MB |
 
 **Large models live on the Hugging Face Hub** —
-[RW-Elixr/paddleocr-hebrew](https://huggingface.co/RW-Elixr/paddleocr-hebrew).
+[RW/paddleocr-hebrew](https://huggingface.co/RW/paddleocr-hebrew).
 These dirs carry the `MODEL_CARD.md` + `md5sums.txt` only; download the ONNX from HF:
 
 | dir | files on HF | size |
@@ -25,7 +25,7 @@ These dirs carry the `MODEL_CARD.md` + `md5sums.txt` only; download the ONNX fro
 
 ```bash
 # grab the flagship + charset into a local dir
-huggingface-cli download RW-Elixr/paddleocr-hebrew \
+huggingface-cli download RW/paddleocr-hebrew \
     --include "charset_v2f.txt" "word-det/*" "server-svtrv2/*" \
     --local-dir hebrew-ocr-models
 ```
