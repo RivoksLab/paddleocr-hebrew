@@ -55,7 +55,7 @@ for line in result["lines"]:
   here runs on onnxruntime alone, no Paddle at inference.)
 
 Models are hosted on the **Hugging Face Hub**:
-[RW-Elixr/paddleocr-hebrew](https://huggingface.co/RW-Elixr/paddleocr-hebrew)
+[RW/paddleocr-hebrew](https://huggingface.co/RW/paddleocr-hebrew)
 (~370 MB, ONNX + per-model cards + md5sums). The small detectors and the mobile
 rec also ship in this repo under [`models/`](models/) for a zero-download start.
 
