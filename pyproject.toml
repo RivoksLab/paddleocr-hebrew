@@ -9,7 +9,7 @@ description = "Hebrew OCR — PaddleOCR/SVTRv2 recognizers + a runnable page pip
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "Apache-2.0" }
-authors = [{ name = "RW-Elixr" }]
+authors = [{ name = "Rivok Labs" }]
 keywords = ["ocr", "hebrew", "paddleocr", "svtrv2", "rtl", "onnx", "bidi"]
 classifiers = [
     "License :: OSI Approved :: Apache Software License",
@@ -29,8 +29,8 @@ dependencies = [
 gpu = ["onnxruntime-gpu>=1.17"]
 
 [project.urls]
-Homepage = "https://github.com/RW-Elixr/paddleocr-hebrew"
-Models = "https://huggingface.co/RW/paddleocr-hebrew"
+Homepage = "https://github.com/rivoklabs/paddleocr-hebrew"
+Models = "https://huggingface.co/rivoklabs/paddleocr-hebrew"
 
 [tool.setuptools]
 packages = ["ocr"]
