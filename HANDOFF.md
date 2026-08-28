@@ -3,11 +3,11 @@
 Everything is built and committed locally. You push (no credentials touched this
 session). Two artifacts:
 
-- **GitHub repo** (code + docs + small models): `/mnt/mydrive/Projects/paddleocr-hebrew/`
-- **Hugging Face model repo** (all ONNX weights): `/mnt/mydrive/Projects/paddleocr-hebrew-hf/`
+- **GitHub repo** (code + docs + small models): `/mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew/`
+- **Hugging Face model repo** (all ONNX weights): `/mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf/`
 
-> Namespaces (confirmed 2026-07-23): GitHub owner = `RW-Elixr`, Hugging Face
-> namespace = `RW`. All READMEs, `examples/quickstart.py` (`HF_REPO`), and the
+> Namespaces (confirmed 2026-08-28): GitHub owner = `rivoklabs`, Hugging Face
+> namespace = `rivoklabs`. All READMEs, `examples/quickstart.py` (`HF_REPO`), and the
 > HF `README.md` already use these.
 
 ## 1. GitHub (create private, then push)
@@ -16,8 +16,8 @@ Create an **empty private** repo named `paddleocr-hebrew` on github.com (no READ
 license/gitignore — the repo already has them). Then:
 
 ```bash
-cd /mnt/mydrive/Projects/paddleocr-hebrew
-git remote add origin git@github.com:RW-Elixr/paddleocr-hebrew.git   # or https://…
+cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew
+git remote add origin git@github.com:rivoklabs/paddleocr-hebrew.git   # or https://…
 git push -u origin main
 ```
 
@@ -32,8 +32,8 @@ reviewed.
 pip install huggingface_hub
 huggingface-cli login                              # paste an HF write token
 huggingface-cli repo create paddleocr-hebrew --type model --private
-cd /mnt/mydrive/Projects/paddleocr-hebrew-hf
-huggingface-cli upload RW/paddleocr-hebrew . . --repo-type model
+cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf
+huggingface-cli upload rivoklabs/paddleocr-hebrew . . --repo-type model
 ```
 
 Uploads ~370 MB (7 model folders + shared charset + cards + md5sums). Make the HF
@@ -42,7 +42,7 @@ repo public when ready. The GitHub links to the HF repo will then resolve.
 ## 3. Verify after push
 
 - GitHub: clone fresh, `pip install -e .`, `python examples/quickstart.py --cpu <image>`.
-- HF: `huggingface-cli download RW/paddleocr-hebrew --include "server-svtrv2/*"`
+- HF: `huggingface-cli download rivoklabs/paddleocr-hebrew --include "server-svtrv2/*"`
   and check the md5s against each `md5sums.txt`.
 
 ## What's in the release
