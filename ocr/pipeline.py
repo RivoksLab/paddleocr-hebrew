@@ -32,11 +32,14 @@ def render_page(path, dpi=150, page=1):
     """Load an image, or render one PDF page, to a BGR numpy array."""
     ext = os.path.splitext(path)[1].lower()
     if ext == ".pdf":
-        import fitz  # pymupdf
-        doc = fitz.open(path)
+        try:
+            import pymupdf  # pymupdf >= 1.24.3
+        except ImportError:
+            import fitz as pymupdf  # older pymupdf, where `fitz` is the only name
+        doc = pymupdf.open(path)
         p = doc[page - 1]
         zoom = dpi / 72
-        pix = p.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=False)
+        pix = p.get_pixmap(matrix=pymupdf.Matrix(zoom, zoom), alpha=False)
         img = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.h, pix.w, 3)
         return cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
     if ext in (".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"):
