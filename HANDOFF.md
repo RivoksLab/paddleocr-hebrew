@@ -29,11 +29,11 @@ reviewed.
 ## 2. Hugging Face (models)
 
 ```bash
-pip install huggingface_hub
-huggingface-cli login                              # paste an HF write token
-huggingface-cli repo create paddleocr-hebrew --type model --private
+pip install huggingface_hub          # provides the `hf` CLI
+hf auth login                              # paste an HF write token
+hf repos create paddleocr-hebrew --type model --private
 cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf
-huggingface-cli upload Rivok/paddleocr-hebrew . . --repo-type model
+hf upload Rivok/paddleocr-hebrew . . --repo-type model
 ```
 
 Uploads ~370 MB (7 model folders + shared charset + cards + md5sums). Make the HF
@@ -42,7 +42,7 @@ repo public when ready. The GitHub links to the HF repo will then resolve.
 ## 3. Verify after push
 
 - GitHub: clone fresh, `pip install -e .`, `python examples/quickstart.py --cpu <image>`.
-- HF: `huggingface-cli download Rivok/paddleocr-hebrew --include "server-svtrv2/*"`
+- HF: `hf download Rivok/paddleocr-hebrew --include "server-svtrv2/*"`
   and check the md5s against each `md5sums.txt`.
 
 ## What's in the release
