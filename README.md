@@ -1,5 +1,7 @@
 # paddleocr-hebrew
 
+**Built by [Rivok Labs](https://rivoklabs.com)** — [rivoklabs.com](https://rivoklabs.com) · [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
+
 Production-grade **Hebrew OCR** built on PaddleOCR — a family of finetuned
 recognizers (CTC + attention) plus a runnable page pipeline. Strong on the two
 things generic OCR gets wrong for Hebrew: **real-world documents** (menus,
@@ -200,6 +202,20 @@ published** — ONNX is all you need to run the models. If you want to **fine-tu
 on your own Hebrew data, adapt the charset, or collaborate**, please open an
 issue / discussion on this repo or reach out: **ronen@rivoklabs.com**. Happy to
 help and to grow this together.
+
+## About Rivok Labs
+
+[**Rivok Labs**](https://rivoklabs.com) builds computational intelligence and automation
+tools, with a particular focus on Hebrew and other right-to-left languages that
+mainstream tooling handles badly.
+
+We released this because there was no open-source Hebrew OCR with a commercial-friendly
+licence that held up on real documents. If it is useful to you, or if it fails on your
+documents, we would like to hear about it.
+
+- **Web:** [rivoklabs.com](https://rivoklabs.com)
+- **Contact:** [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
+- **Issues and discussions:** on this repository
 
 ## License
 
