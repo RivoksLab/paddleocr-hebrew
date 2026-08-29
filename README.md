@@ -4,6 +4,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22163990.svg)](https://doi.org/10.5281/zenodo.22163990)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RivoksLab/paddleocr-hebrew/blob/main/examples/colab_quickstart.ipynb)
 
 Production-grade **Hebrew OCR** built on PaddleOCR — a family of finetuned
 recognizers (CTC + attention) plus a runnable page pipeline. Strong on the two
@@ -46,6 +47,11 @@ print(get_display(line["text"]))   # display ONLY — never before storage/scori
 ---
 
 ## Quickstart (2 minutes)
+
+**Nothing to install:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RivoksLab/paddleocr-hebrew/blob/main/examples/colab_quickstart.ipynb) runs the whole pipeline on a free
+Colab CPU runtime — read the sample page, then upload your own.
+
+Locally:
 
 ```bash
 git clone https://github.com/RivoksLab/paddleocr-hebrew

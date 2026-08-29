@@ -1,6 +1,6 @@
 # Inference-only dependencies for the ocr/ package.
 # GPU: install onnxruntime-gpu instead of onnxruntime (see README).
-numpy>=1.24,<2
+numpy>=1.24
 opencv-python>=4.8
 onnxruntime>=1.17        # or: onnxruntime-gpu  (CUDA / Jetson)
 pyclipper>=1.3           # DBNet box unclip
