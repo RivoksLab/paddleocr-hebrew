@@ -1,8 +1,24 @@
-# Reproducing the Benchmark
+# Benchmark Methodology
 
-This is a practical how-to for reproducing the numbers in [`EVAL_RESULTS.md`](EVAL_RESULTS.md).
+This documents **how** the numbers in [`EVAL_RESULTS.md`](EVAL_RESULTS.md) were produced.
 The important part is the **CER methodology** — Hebrew OCR metrics are easy to get wrong, and a
 metric computed the wrong way is worse than no metric.
+
+> ### ⚠️ The harness is not shipped
+>
+> **You cannot re-run our benchmark from this repository, and the numbers in
+> `EVAL_RESULTS.md` are not independently reproducible.** Two things are missing:
+>
+> 1. **The scripts.** `render_clean_eval.py`, `build_clean_eval_sefaria.py`,
+>    `eval_clean_benchmark.py` and `gen_heblat_realistic_synth.py` are referenced
+>    below as a record of what we ran. They are **not** part of this release.
+> 2. **The data.** `manifests/` ships a README only; the real-crop sets are
+>    withheld for the licensing reasons described there.
+>
+> What this document *is* good for: the exact CER definition, the BiDi
+> normalisation rule, and the leakage checks — enough to build an equivalent
+> harness, and enough to judge whether our numbers mean what we say they mean.
+> Treat the results as **vendor-reported**.
 
 ---
 
@@ -17,9 +33,7 @@ The release includes **synthetic and public-domain eval material only**:
 
 **Real crops (real heb+lat n=233, real-domain menus/invoices/thermal) are NOT shipped** — they
 are GCV/vision-anchored and their sources' ToS prohibit republication. Their numbers are
-reported in `EVAL_RESULTS.md` for honesty, but you cannot rerun them from this repo. Eval
-manifests live in [`manifests/`](manifests/) (placeholder for now — populated as releasable
-sets are snapshotted).
+reported in `EVAL_RESULTS.md` for honesty, but you cannot rerun them from this repo. Eval manifests live in [`manifests/`](manifests/), which currently ships a README only.
 
 ---
 

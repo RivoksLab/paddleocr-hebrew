@@ -9,6 +9,17 @@ The flagship recognizer reads long Hebrew lines *single-pass* (71–80 char line
 at **0.49% CER**) and embedded Latin/number runs inside RTL Hebrew that a plain
 CTC model silently drops.
 
+Every model here is a **finetune of a PaddleOCR model** (PaddleOCR v3.7.0,
+Apache-2.0) and is released under the same licence — see [NOTICE](NOTICE) and the
+lineage column in [Models](#models) below. All reported CER figures are
+**in-house evaluation on our own test sets**: measured, but vendor-reported and
+not independently verified ([eval/EVAL_RESULTS.md](eval/EVAL_RESULTS.md)).
+
+> **Note on scope.** The Paddle training weights (`.pdparams`) and training
+> configs are **not** published — this is a release of inference-ready ONNX
+> models, not a reproducible training pipeline. See
+> [Fine-tuning & collaboration](#fine-tuning--collaboration).
+
 ---
 
 ## ⚠️ Read this first — Hebrew is RTL, output is LOGICAL order
@@ -107,15 +118,15 @@ All recognizers share one byte-identical 120-char charset
 (encoder + decstep) are one logical model — the attention decode loop runs on the
 host (see [docs/techniques.md](docs/techniques.md)).
 
-| model | role | arch | format / size |
-|---|---|---|---|
-| **server-svtrv2** | **flagship** server REC | SVTRv2 (CTC + NRTR heads) | `ctc.onnx` 77 MB · NRTR split `enc 72 + dec 27 MB` |
-| light-svtrv2small | edge / CPU REC (NRTR-only) | SVTRv2-small (KD student) | split `enc 28 + dec 27 MB` |
-| server-v5 | alt word-level server REC | PPHGNetV2-B4 (CTC) | `rec.onnx` 73 MB |
-| server-v6 | alt word-level server REC | PPLCNetV4-medium (CTC) | `rec.onnx` 60 MB |
-| mobile-word | mobile word REC | PPLCNetV3 (KD student) | `rec.onnx` 7.4 MB |
-| word-det | **word detector** (flagship) | mobile DBNet PPLCNetV3 | `det.onnx` 4.6 MB |
-| line-det | line detector (situational) | mobile DBNet PPLCNetV3 | `det.onnx` 4.6 MB |
+| model | role | arch | finetuned from | format / size |
+|---|---|---|---|---|
+| **server-svtrv2** | **flagship** server REC | SVTRv2 (CTC + NRTR heads) | SVTRv2, Chinese pretrain | `ctc.onnx` 77 MB · NRTR split `enc 72 + dec 27 MB` |
+| light-svtrv2small | edge / CPU REC (NRTR-only) | SVTRv2-small (KD student) | distilled from server-svtrv2 | split `enc 28 + dec 27 MB` |
+| server-v5 | alt word-level server REC | PPHGNetV2-B4 (CTC) | PP-OCRv5 server rec | `rec.onnx` 73 MB |
+| server-v6 | alt word-level server REC | PPLCNetV4-medium (CTC) | PP-OCRv6 | `rec.onnx` 60 MB |
+| mobile-word | mobile word REC | PPLCNetV3 (KD student) | PP-OCRv5 mobile rec | `rec.onnx` 7.4 MB |
+| word-det | **word detector** (flagship) | mobile DBNet PPLCNetV3 | PP-OCR mobile DBNet | `det.onnx` 4.6 MB |
+| line-det | line detector (situational) | mobile DBNet PPLCNetV3 | PP-OCR mobile DBNet | `det.onnx` 4.6 MB |
 
 Which recognizer? **server-svtrv2** for the best quality on long + bilingual
 lines. **light-svtrv2small** for a small NRTR model on x86-CPU / edge.

@@ -1,0 +1,17 @@
+# ONNX weights are binary — never diff or auto-convert them
+*.onnx     binary
+*.png      binary
+*.jpg      binary
+*.pdparams binary
+
+# Keep text files with LF endings across platforms
+*.py       text eol=lf
+*.md       text eol=lf
+*.txt      text eol=lf
+*.toml     text eol=lf
+*.yml      text eol=lf
+*.cff      text eol=lf
+
+# Ignore vendored/doc material in GitHub's language statistics
+docs/**    linguist-documentation
+eval/**    linguist-documentation

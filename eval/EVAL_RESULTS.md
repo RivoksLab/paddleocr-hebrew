@@ -1,5 +1,11 @@
 # Benchmark Scorecard — Hebrew OCR
 
+> **These are in-house numbers.** Every figure below was produced by our own evaluation
+> harness on our own test sets. They are measured rather than estimated, and BiDi-normalised
+> on both sides before Levenshtein — but they are **vendor-reported and not independently
+> verified**. Methodology is in [`run_eval.md`](run_eval.md) so you can disagree with it
+> specifically.
+
 Honest, reproducible benchmark for the release. All CER is **micro-CER (%)**, computed with
 BiDi-normalization on both sides before Levenshtein (see [`run_eval.md`](run_eval.md) for the
 exact methodology). Systems compared: **Tesseract 5** (heb / heb+eng, psm7), and our

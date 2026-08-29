@@ -1,0 +1,32 @@
+name: Bug (installation, runtime, crash)
+description: Something fails to install, load or run
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes:
+      label: Command or code to reproduce
+      render: shell
+    validations: { required: true }
+  - type: textarea
+    id: traceback
+    attributes:
+      label: Full traceback
+      render: python
+  - type: input
+    id: env
+    attributes:
+      label: OS, Python, onnxruntime version
+      placeholder: "Ubuntu 24.04, Python 3.11, onnxruntime 1.20.1 (CPU)"
+    validations: { required: true }
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Checks
+      options:
+        - label: I verified my model files against the shipped md5sums.txt

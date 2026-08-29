@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "paddleocr-hebrew: production Hebrew OCR with a script-gated CTC/attention cascade"
+message: "If you use these models or the findings, please cite this repository."
+type: software
+authors:
+  - name: "Rivok Labs"
+    website: "https://rivoklabs.com"
+repository-code: "https://github.com/rivoklabs/paddleocr-hebrew"
+url: "https://huggingface.co/rivoklabs/paddleocr-hebrew"
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2026-08-29"
+keywords:
+  - Hebrew
+  - OCR
+  - optical character recognition
+  - right-to-left
+  - bidirectional text
+  - BiDi
+  - CTC
+  - attention decoder
+  - SVTRv2
+  - PaddleOCR
+  - ONNX
+abstract: >-
+  A family of Hebrew OCR models finetuned from PaddleOCR, released as ONNX under
+  Apache-2.0, together with a runnable page pipeline. The central finding is that a
+  monotonic CTC decoder blank-collapses Latin and digit runs embedded inside
+  right-to-left Hebrew, deleting them entirely rather than misreading them, while an
+  attention decoder on the same backbone reads them natively. The release deploys this
+  as a confidence- and script-gated CTC-to-attention cascade, obtaining attention-level
+  quality on mixed-script text at approximately CTC latency.
