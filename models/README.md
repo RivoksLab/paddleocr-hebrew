@@ -25,7 +25,7 @@ These dirs carry the `MODEL_CARD.md` + `md5sums.txt` only; download the ONNX fro
 
 ```bash
 # grab the flagship + charset into a local dir
-huggingface-cli download Rivok/paddleocr-hebrew \
+hf download Rivok/paddleocr-hebrew \
     --include "charset_v2f.txt" "word-det/*" "server-svtrv2/*" \
     --local-dir hebrew-ocr-models
 ```
