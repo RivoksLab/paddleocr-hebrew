@@ -5,6 +5,7 @@ type: software
 authors:
   - name: "Rivok Labs"
     website: "https://rivoklabs.com"
+doi: "10.5281/zenodo.22163990"
 repository-code: "https://github.com/RivoksLab/paddleocr-hebrew"
 url: "https://huggingface.co/Rivok/paddleocr-hebrew"
 license: Apache-2.0

@@ -2,6 +2,9 @@
 
 **Built by [Rivok Labs](https://rivoklabs.com)** — [rivoklabs.com](https://rivoklabs.com) · [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22163990.svg)](https://doi.org/10.5281/zenodo.22163990)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
 Production-grade **Hebrew OCR** built on PaddleOCR — a family of finetuned
 recognizers (CTC + attention) plus a runnable page pipeline. Strong on the two
 things generic OCR gets wrong for Hebrew: **real-world documents** (menus,
@@ -216,6 +219,25 @@ documents, we would like to hear about it.
 - **Web:** [rivoklabs.com](https://rivoklabs.com)
 - **Contact:** [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
 - **Issues and discussions:** on this repository
+
+## Citing this work
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22163990.svg)](https://doi.org/10.5281/zenodo.22163990)
+
+```bibtex
+@software{rivoklabs_paddleocr_hebrew,
+  author  = {{Rivok Labs}},
+  title   = {paddleocr-hebrew: production Hebrew OCR with a
+             script-gated CTC/attention cascade},
+  year    = {2026},
+  doi     = {10.5281/zenodo.22163990},
+  url     = {https://github.com/RivoksLab/paddleocr-hebrew}
+}
+```
+
+That DOI always resolves to the latest release. To cite this exact version, use
+`10.5281/zenodo.22163991`. GitHub's "Cite this repository" button reads
+[CITATION.cff](CITATION.cff).
 
 ## License
 
