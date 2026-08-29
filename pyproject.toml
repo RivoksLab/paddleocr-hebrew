@@ -17,7 +17,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Image Recognition",
 ]
 dependencies = [
-    "numpy>=1.24,<2",
+    "numpy>=1.24",
     "opencv-python>=4.8",
     "onnxruntime>=1.17",
     "pyclipper>=1.3",
