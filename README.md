@@ -45,14 +45,14 @@ print(get_display(line["text"]))   # display ONLY — never before storage/scori
 ```bash
 git clone https://github.com/RivoksLab/paddleocr-hebrew
 cd paddleocr-hebrew
-pip install -e .            # installs the `ocr` package (ONNX inference only)
+pip install -e .            # installs the `paddleocr_hebrew` package (ONNX inference only)
 pip install huggingface_hub # to auto-download the models from the Hub
 
 python examples/quickstart.py examples/sample_images/sample_page.png
 ```
 
 ```python
-from ocr import HebrewOCR
+from paddleocr_hebrew import HebrewOCR
 
 ocr = HebrewOCR(models_dir="path/to/downloaded/models")   # HF snapshot dir
 result = ocr.read("page.png")          # image or PDF
@@ -88,8 +88,8 @@ image / PDF page
 
 This **word-DET + single-pass** design beats line-level detection on Hebrew
 pages (see benchmark). The recognizer is in
-[`ocr/plan_e_rec.py`](ocr/plan_e_rec.py); the orchestrator in
-[`ocr/pipeline.py`](ocr/pipeline.py).
+[`paddleocr_hebrew/plan_e_rec.py`](paddleocr_hebrew/plan_e_rec.py); the orchestrator in
+[`paddleocr_hebrew/pipeline.py`](paddleocr_hebrew/pipeline.py).
 
 ### Two pipelines (same code + recognizer, different detector)
 

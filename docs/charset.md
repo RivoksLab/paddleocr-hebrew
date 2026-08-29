@@ -88,7 +88,7 @@ The 120 characters are shared, but the two decoder heads wrap them differently.
 ```
 
 Here **`<s>` = BOS = index 2** and **`</s>` = EOS = index 3**. The host-driven
-decode loop (see `docs/techniques.md` §1 and `ocr/plan_e_rec.py`) seeds the
+decode loop (see `docs/techniques.md` §1 and `paddleocr_hebrew/plan_e_rec.py`) seeds the
 sequence with token 2 and stops on token 3; indices `< 4` are special tokens and
 are dropped from the emitted string. Because both heads are built from the same
 `charset_v2f.txt`, a crop recognized by either head maps to the identical Unicode

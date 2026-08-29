@@ -1,7 +1,7 @@
 """Hebrew OCR — PaddleOCR-based Hebrew recognizers + a runnable page pipeline.
 
 Public API:
-    from ocr import HebrewOCR
+    from paddleocr_hebrew import HebrewOCR
     ocr = HebrewOCR(models_dir="hebrew-ocr-models")   # a downloaded HF snapshot
     result = ocr.read("page.png")                      # {lines, words, meta}
 """

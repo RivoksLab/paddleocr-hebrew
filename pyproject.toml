@@ -33,4 +33,4 @@ Homepage = "https://github.com/RivoksLab/paddleocr-hebrew"
 Models = "https://huggingface.co/Rivok/paddleocr-hebrew"
 
 [tool.setuptools]
-packages = ["ocr"]
+packages = ["paddleocr_hebrew"]
