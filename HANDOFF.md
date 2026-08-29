@@ -17,7 +17,7 @@ license/gitignore — the repo already has them). Then:
 
 ```bash
 cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew
-git remote add origin git@github.com:Rivok/paddleocr-hebrew.git   # or https://…
+git remote add origin git@github.com:RivoksLab/paddleocr-hebrew.git   # or https://…
 git push -u origin main
 ```
 
