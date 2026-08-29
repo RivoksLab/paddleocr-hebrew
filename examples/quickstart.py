@@ -16,7 +16,7 @@ import argparse
 
 from ocr import HebrewOCR
 
-HF_REPO = "rivoklabs/paddleocr-hebrew"   # <-- your HF model repo
+HF_REPO = "Rivok/paddleocr-hebrew"   # <-- your HF model repo
 
 
 def resolve_models_dir(models_dir, pipeline):

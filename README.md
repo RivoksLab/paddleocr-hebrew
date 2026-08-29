@@ -43,7 +43,7 @@ print(get_display(line["text"]))   # display ONLY — never before storage/scori
 ## Quickstart (2 minutes)
 
 ```bash
-git clone https://github.com/rivoklabs/paddleocr-hebrew
+git clone https://github.com/RivoksLab/paddleocr-hebrew
 cd paddleocr-hebrew
 pip install -e .            # installs the `ocr` package (ONNX inference only)
 pip install huggingface_hub # to auto-download the models from the Hub
@@ -66,7 +66,7 @@ for line in result["lines"]:
   here runs on onnxruntime alone, no Paddle at inference.)
 
 Models are hosted on the **Hugging Face Hub**:
-[rivoklabs/paddleocr-hebrew](https://huggingface.co/rivoklabs/paddleocr-hebrew)
+[Rivok/paddleocr-hebrew](https://huggingface.co/Rivok/paddleocr-hebrew)
 (~370 MB, ONNX + per-model cards + md5sums). The small detectors and the mobile
 rec also ship in this repo under [`models/`](models/) for a zero-download start.
 

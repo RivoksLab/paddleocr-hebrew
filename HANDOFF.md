@@ -6,8 +6,8 @@ session). Two artifacts:
 - **GitHub repo** (code + docs + small models): `/mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew/`
 - **Hugging Face model repo** (all ONNX weights): `/mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf/`
 
-> Namespaces (confirmed 2026-08-28): GitHub owner = `rivoklabs`, Hugging Face
-> namespace = `rivoklabs`. All READMEs, `examples/quickstart.py` (`HF_REPO`), and the
+> Namespaces (confirmed 2026-08-29): GitHub owner = `RivoksLab`, Hugging Face
+> namespace = `Rivok`. All READMEs, `examples/quickstart.py` (`HF_REPO`), and the
 > HF `README.md` already use these.
 
 ## 1. GitHub (create private, then push)
@@ -17,7 +17,7 @@ license/gitignore — the repo already has them). Then:
 
 ```bash
 cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew
-git remote add origin git@github.com:rivoklabs/paddleocr-hebrew.git   # or https://…
+git remote add origin git@github.com:Rivok/paddleocr-hebrew.git   # or https://…
 git push -u origin main
 ```
 
@@ -33,7 +33,7 @@ pip install huggingface_hub
 huggingface-cli login                              # paste an HF write token
 huggingface-cli repo create paddleocr-hebrew --type model --private
 cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf
-huggingface-cli upload rivoklabs/paddleocr-hebrew . . --repo-type model
+huggingface-cli upload Rivok/paddleocr-hebrew . . --repo-type model
 ```
 
 Uploads ~370 MB (7 model folders + shared charset + cards + md5sums). Make the HF
@@ -42,7 +42,7 @@ repo public when ready. The GitHub links to the HF repo will then resolve.
 ## 3. Verify after push
 
 - GitHub: clone fresh, `pip install -e .`, `python examples/quickstart.py --cpu <image>`.
-- HF: `huggingface-cli download rivoklabs/paddleocr-hebrew --include "server-svtrv2/*"`
+- HF: `huggingface-cli download Rivok/paddleocr-hebrew --include "server-svtrv2/*"`
   and check the md5s against each `md5sums.txt`.
 
 ## What's in the release

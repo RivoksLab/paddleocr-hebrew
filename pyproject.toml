@@ -29,8 +29,8 @@ dependencies = [
 gpu = ["onnxruntime-gpu>=1.17"]
 
 [project.urls]
-Homepage = "https://github.com/rivoklabs/paddleocr-hebrew"
-Models = "https://huggingface.co/rivoklabs/paddleocr-hebrew"
+Homepage = "https://github.com/RivoksLab/paddleocr-hebrew"
+Models = "https://huggingface.co/Rivok/paddleocr-hebrew"
 
 [tool.setuptools]
 packages = ["ocr"]

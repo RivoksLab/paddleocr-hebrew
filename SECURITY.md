@@ -8,7 +8,7 @@ PDF files you give it. The realistic risk surface is therefore **malicious input
 files from an untrusted source**.
 
 Only download model weights from the official
-[Hugging Face repository](https://huggingface.co/rivoklabs/paddleocr-hebrew) and verify
+[Hugging Face repository](https://huggingface.co/Rivok/paddleocr-hebrew) and verify
 them against the `md5sums.txt` shipped in each model folder.
 
 ## Reporting a vulnerability
