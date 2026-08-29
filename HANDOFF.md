@@ -47,7 +47,7 @@ repo public when ready. The GitHub links to the HF repo will then resolve.
 
 ## What's in the release
 
-- `ocr/` — runnable inference package (word-DET + SVTRv2 Plan-E cascade), verified
+- `paddleocr_hebrew/` — runnable inference package (word-DET + SVTRv2 Plan-E cascade), verified
   end-to-end on GPU (the flagship path).
 - `models/` — shared charset + small ONNX in-repo (word-det, line-det, mobile-word);
   large models are card-only (download from HF).

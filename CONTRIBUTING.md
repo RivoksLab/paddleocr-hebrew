@@ -13,7 +13,7 @@ map of what is easy to contribute and what is not.
   know — including, especially, if we come out worse.
 - **Bidirectional-script results beyond Hebrew.** The CTC-deletes-embedded-LTR-islands
   finding should apply to Arabic, Farsi and Urdu. Nobody has checked. If you do, tell us.
-- **Inference fixes and packaging**: the `ocr/` package, ONNX runtime compatibility,
+- **Inference fixes and packaging**: the `paddleocr_hebrew/` package, ONNX runtime compatibility,
   platform issues, dependency pins.
 - **Docs.** If something in `docs/` is wrong or unclear, that is a real bug.
 

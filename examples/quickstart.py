@@ -4,7 +4,7 @@
 Models live on the Hugging Face Hub. First run downloads them (~370 MB) and
 caches them; pass --models-dir to use a local snapshot instead.
 
-    pip install -e .            # from the repo root (installs the `ocr` package)
+    pip install -e .            # from the repo root (installs the `paddleocr_hebrew` package)
     pip install huggingface_hub # only needed for auto-download
     python examples/quickstart.py examples/sample_images/sample_page.png
 
@@ -14,7 +14,7 @@ returns LOGICAL Unicode order).
 """
 import argparse
 
-from ocr import HebrewOCR
+from paddleocr_hebrew import HebrewOCR
 
 HF_REPO = "Rivok/paddleocr-hebrew"   # <-- your HF model repo
 

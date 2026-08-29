@@ -32,7 +32,7 @@ loop to the host:
 Because neither exported graph contains control flow, both convert cleanly and run
 on **onnxruntime alone** (CPU or CUDA EP). The host loop is paddle-free.
 
-Reference implementation: `ocr/plan_e_rec.py`, method `PlanECascade._nrtr_infer`.
+Reference implementation: `paddleocr_hebrew/plan_e_rec.py`, method `PlanECascade._nrtr_infer`.
 The full mechanism in ~15 lines:
 
 ```python
@@ -128,7 +128,7 @@ while a whole Latin/digit run has silently vanished. The fix: fall back whenever
 The script condition catches the high-confidence deletions; the confidence
 condition catches ordinary low-confidence noise.
 
-Reference: `ocr/plan_e_rec.py`, `PlanECascade.rec_crops`. The CTC pass runs in
+Reference: `paddleocr_hebrew/plan_e_rec.py`, `PlanECascade.rec_crops`. The CTC pass runs in
 width-bucketed batches; the gated minority goes to the per-crop NRTR loop. Both
 heads use SVTRv2-native preprocessing (`quantize_width` + `prep_dynamic_target_w`,
 `max_w = 1280`), so cascade output is byte-identical to the validated eval.

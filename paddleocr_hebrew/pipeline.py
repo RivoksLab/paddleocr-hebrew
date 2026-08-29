@@ -12,7 +12,7 @@ line detector (10.36%) and Tesseract (14.20%).
 Output is a dict of recognized LINES (logical Unicode order — apply python-bidi
 get_display() only when rendering) plus the underlying word boxes.
 
-    from ocr import HebrewOCR
+    from paddleocr_hebrew import HebrewOCR
     ocr = HebrewOCR(models_dir="hebrew-ocr-models")   # a downloaded HF snapshot
     result = ocr.read("page.png")
     for line in result["lines"]:
