@@ -5,6 +5,6 @@ contact_links:
     about: >-
       Training weights and configs are not published. If you need to finetune on your
       own Hebrew data or adapt the charset, get in touch directly.
-  - name: Rivok Labs
-    url: https://rivoklabs.com
-    about: Who builds this. Background on why CTC deletes embedded Latin runs is in docs/FINDINGS.md.
+  - name: Read the findings first
+    url: https://rivoklabs.com/research/hebrew-ocr.html
+    about: Why CTC deletes embedded Latin runs inside RTL Hebrew, and what we did about it.
