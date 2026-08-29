@@ -5,4 +5,4 @@ opencv-python>=4.8
 onnxruntime>=1.17        # or: onnxruntime-gpu  (CUDA / Jetson)
 pyclipper>=1.3           # DBNet box unclip
 Pillow>=10.0
-pymupdf>=1.24            # PDF input only (import fitz); drop if you only read images
+pymupdf>=1.24            # PDF input only; drop it if you only read images
