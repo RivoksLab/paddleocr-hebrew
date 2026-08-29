@@ -1,0 +1,10 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Fine-tuning, charset changes, collaboration
+    url: mailto:ronen@rivoklabs.com
+    about: >-
+      Training weights and configs are not published. If you need to finetune on your
+      own Hebrew data or adapt the charset, get in touch directly.
+  - name: Read the findings first
+    url: https://rivoklabs.com/research/hebrew-ocr.html
+    about: Why CTC deletes embedded Latin runs, and what we did about it.

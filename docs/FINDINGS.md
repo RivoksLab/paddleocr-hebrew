@@ -7,6 +7,8 @@ everyone who comes after us the same spend.
 
 Every number below is measured, BiDi-normalized, and reproducible from the eval harness
 (see [`../eval/run_eval.md`](../eval/run_eval.md) and [`../eval/EVAL_RESULTS.md`](../eval/EVAL_RESULTS.md)).
+All of it is **in-house evaluation on our own test sets** — vendor-reported, not
+independently verified.
 
 ---
 
@@ -66,9 +68,17 @@ Full mechanism and gate design: [`techniques.md`](techniques.md).
 ## 3. Long Hebrew lines: a ~52% wall for years, broken single-pass by SVTRv2
 
 Reading long Hebrew lines (61–80 chars) was the hardest sub-problem. Every line-level model
-we or the community trained plateaued around **52–55% CER** on that bucket, no matter the
-data volume — a documented industry wall (PaddleOCR #11482 / #13938 reproduce the same
-plateau and give up).
+**we** trained plateaued around **52–55% CER** on that bucket, no matter the data volume.
+
+Long-sequence degradation is not Hebrew-specific, which was the clue that ours was not a
+Hebrew data problem. PaddleOCR
+[#11482](https://github.com/PaddlePaddle/PaddleOCR/issues/11482) reports that long-sequence
+recognition "never matches the accuracy of single words" across CRNN / SAR / ABINET / SVTR
+(script unspecified), and
+[#13938](https://github.com/PaddlePaddle/PaddleOCR/issues/13938) documents a **Chinese**
+`ch_PP-OCRv4_rec` model stuck near 50% *accuracy* on ~135-char lines. Neither is Hebrew and
+neither reports CER, so they are corroboration that the failure mode is general — not
+external measurements of our number.
 
 Two things broke it:
 

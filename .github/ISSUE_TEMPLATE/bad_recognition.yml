@@ -1,0 +1,46 @@
+name: Bad recognition on a real document
+description: The model misread or dropped text on a page you have
+labels: ["recognition"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the most useful issue you can file. Please include the image if you
+        are able to share it.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected text
+      description: >-
+        In LOGICAL order please — the order you read it, not the visual order.
+        Do not run it through python-bidi's get_display() first.
+      render: text
+    validations: { required: true }
+  - type: textarea
+    id: actual
+    attributes:
+      label: What the model returned
+      render: text
+    validations: { required: true }
+  - type: dropdown
+    id: pipeline
+    attributes:
+      label: Pipeline
+      options: ["word (default)", "line", "not sure"]
+    validations: { required: true }
+  - type: input
+    id: models
+    attributes:
+      label: Which recogniser
+      placeholder: "server-svtrv2 (default), mobile-word, server-v5, ..."
+  - type: textarea
+    id: doctype
+    attributes:
+      label: Document type
+      placeholder: "thermal receipt / menu / invoice / academic scan / handwriting / ..."
+  - type: checkboxes
+    id: bilingual
+    attributes:
+      label: Does the text mix scripts?
+      options:
+        - label: The line contains Latin letters or digits inside the Hebrew
