@@ -37,7 +37,7 @@ cd paddleocr-hebrew
 pip install -e .            # installs the `ocr` package (ONNX inference only)
 pip install huggingface_hub # to auto-download the models from the Hub
 
-python examples/quickstart.py examples/sample_images/academic_page.png
+python examples/quickstart.py examples/sample_images/sample_page.png
 ```
 
 ```python

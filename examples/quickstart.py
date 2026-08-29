@@ -6,7 +6,7 @@ caches them; pass --models-dir to use a local snapshot instead.
 
     pip install -e .            # from the repo root (installs the `ocr` package)
     pip install huggingface_hub # only needed for auto-download
-    python examples/quickstart.py examples/sample_images/academic_page.png
+    python examples/quickstart.py examples/sample_images/sample_page.png
 
 For rendering the RTL output correctly in a terminal/GUI, apply python-bidi
 get_display() at display time ONLY — never before storing/scoring (the pipeline
