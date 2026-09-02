@@ -44,6 +44,52 @@ from bidi.algorithm import get_display
 print(get_display(line["text"]))   # display ONLY — never before storage/scoring
 ```
 
+## ⚠️ Also read this — these models do not read niqqud
+
+The 120-character charset contains **no niqqud (vowel points) and no te'amim
+(cantillation marks)**. The models never emit them. Feed a vocalised page in and
+you get the consonantal text back — the marks are dropped, silently.
+
+That is a deliberate scope choice, not a bug, but it rules out some real use
+cases. If you are digitising **liturgical, Biblical, poetic or children's
+material**, or **Yiddish and Ladino** (which use Hebrew script with different
+orthographic conventions), these models will not give you what you need as-is.
+
+It also means **you cannot score them against vocalised ground truth** without
+stripping marks from both sides first — otherwise you are measuring a charset
+mismatch, not recognition. To calibrate: on the Hebrew-script split of
+[GlotOCR-bench](https://github.com/cisnlp/GlotOCR-bench), 41 of 100 samples carry
+marks we cannot emit, so a *flawless* recogniser would still score 12.4% CER
+there — 38.9% on the Biblical Hebrew subset alone.
+
+Unvocalised Hebrew — which is the overwhelming majority of modern documents,
+signage, receipts, invoices, forms and press — is unaffected.
+
+See [docs/charset.md](docs/charset.md) for the full charset and the
+normalisation rules.
+
+## ⚠️ And this — document typography only, not display faces
+
+These models are trained on **document type**: receipts, menus, invoices, forms,
+scans, print. They do not generalise to decorative or display faces — striped and
+hatched fills, hollow outlines, heavy poster type.
+
+Measured, on the Hebrew-script split of
+[GlotOCR-bench](https://github.com/cisnlp/GlotOCR-bench), which renders every
+sample in a randomly chosen Google Font: the error distribution is bimodal.
+78 of 100 samples land at a median 5.3% CER; the other 22 fail outright (>50%
+CER), and every one of those is a decorative face. Failure rate is flat across
+languages, so it is font-driven, not script-driven.
+
+Two consequences worth planning around:
+
+- **Signage, packaging, posters and logos are out of scope.** Use a
+  general-purpose OCR or a VLM for those.
+- **Failure is loud, not quiet.** On a face it cannot read, the recogniser emits
+  confident garbage — sometimes Latin characters from Hebrew input — rather than
+  returning nothing. Check the script of your output if you feed it unknown
+  material.
+
 ---
 
 ## Quickstart (2 minutes)
