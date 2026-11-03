@@ -3,8 +3,8 @@
 Everything is built and committed locally. You push (no credentials touched this
 session). Two artifacts:
 
-- **GitHub repo** (code + docs + small models): `/mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew/`
-- **Hugging Face model repo** (all ONNX weights): `/mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf/`
+- **GitHub repo** (code + docs + small models): `/mnt/data/project-files/heb_OCR/paddleocr-hebrew/`
+- **Hugging Face model repo** (all ONNX weights): `/mnt/data/project-files/heb_OCR/paddleocr-hebrew-hf/`
 
 > Namespaces (confirmed 2026-08-29): GitHub owner = `RivoksLab`, Hugging Face
 > namespace = `Rivok`. All READMEs, `examples/quickstart.py` (`HF_REPO`), and the
@@ -16,7 +16,7 @@ Create an **empty private** repo named `paddleocr-hebrew` on github.com (no READ
 license/gitignore — the repo already has them). Then:
 
 ```bash
-cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew
+cd /mnt/data/project-files/heb_OCR/paddleocr-hebrew
 git remote add origin git@github.com:RivoksLab/paddleocr-hebrew.git   # or https://…
 git push -u origin main
 ```
@@ -32,7 +32,7 @@ reviewed.
 pip install huggingface_hub          # provides the `hf` CLI
 hf auth login                              # paste an HF write token
 hf repos create paddleocr-hebrew --type model --private
-cd /mnt/shared_drive/claude_projects/heb_OCR/paddleocr-hebrew-hf
+cd /mnt/data/project-files/heb_OCR/paddleocr-hebrew-hf
 hf upload Rivok/paddleocr-hebrew . . --repo-type model
 ```
 
