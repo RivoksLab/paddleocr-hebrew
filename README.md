@@ -177,7 +177,7 @@ host (see [docs/techniques.md](docs/techniques.md)).
 
 | model | role | arch | finetuned from | format / size |
 |---|---|---|---|---|
-| **server-svtrv2** | **flagship** server REC | SVTRv2 (CTC + NRTR heads) | SVTRv2, Chinese pretrain | `ctc.onnx` 77 MB · NRTR split `enc 72 + dec 27 MB` |
+| **server-svtrv2** | **flagship** server REC | SVTRv2 (CTC + NRTR heads) | SVTRv2, Chinese pretrain | `ctc.onnx` 77 MB (INT8 `ctc.int8.onnx` 20 MB) · NRTR split `enc 72 + dec 27 MB` |
 | light-svtrv2small | edge / CPU REC (NRTR-only) | SVTRv2-small (KD student) | distilled from server-svtrv2 | split `enc 28 + dec 27 MB` |
 | server-v5 | alt word-level server REC | PPHGNetV2-B4 (CTC) | PP-OCRv5 server rec | `rec.onnx` 73 MB |
 | server-v6 | alt word-level server REC | PPLCNetV4-medium (CTC) | PP-OCRv6 | `rec.onnx` 60 MB |
@@ -191,6 +191,11 @@ lines. **light-svtrv2small** for a small NRTR model on x86-CPU / edge.
 CTC word-level alternatives (note: v6 **cannot** do sliding-window long lines —
 SVTRv2 is the long-line tool). Per-model details + numbers in each
 `MODEL_CARD.md`.
+
+**Smaller CTC option:** `server-svtrv2/ctc.int8.onnx` (20 MB) is an INT8-quantized copy of
+the CTC head, a quarter of the size with the same accuracy (within 0.05 CER points of
+`ctc.onnx` on every slice of 1,861 real line crops). It is a drop-in replacement:
+`HebrewOCR(models_dir, ctc="server-svtrv2/ctc.int8.onnx")`.
 
 ---
 

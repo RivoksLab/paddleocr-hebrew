@@ -18,7 +18,7 @@ These dirs carry the `MODEL_CARD.md` + `md5sums.txt` only; download the ONNX fro
 
 | dir | files on HF | size |
 |---|---|---|
-| `server-svtrv2/` | `ctc.onnx`, `nrtr-encoder.onnx`, `nrtr-decstep.onnx` | 77 + 72 + 27 MB |
+| `server-svtrv2/` | `ctc.onnx` (or `ctc.int8.onnx`), `nrtr-encoder.onnx`, `nrtr-decstep.onnx` | 77 (INT8: 20) + 72 + 27 MB |
 | `light-svtrv2small/` | `nrtr-encoder.onnx`, `nrtr-decstep.onnx` | 28 + 27 MB |
 | `server-v5/` | `rec.onnx` | 73 MB |
 | `server-v6/` | `rec.onnx` | 60 MB |

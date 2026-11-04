@@ -23,6 +23,11 @@ Paddle `.pdparams` → ONNX via ABI-matched paddle 3.2.2 + paddle2onnx 2.1.0.
 
 ## Files
 - `ctc.onnx` (77 MB) — CTC head, single-pass fast path.
+- `ctc.int8.onnx` (20 MB) — the same CTC head with INT8 weights (ONNX Runtime dynamic
+  quantization). Drop-in replacement for `ctc.onnx`: same input, output and charset. On
+  1,861 real line crops its CER is within 0.05 points of `ctc.onnx` on every slice. Use it
+  when download size matters; it runs fastest on CPUs with int8 dot-product instructions
+  (VNNI on x86, dotprod on ARM).
 - `nrtr-encoder.onnx` (72 MB) + `nrtr-decstep.onnx` (27 MB) — split NRTR, host-loop driven.
 - md5s in `md5sums.txt`.
 

@@ -1,3 +1,4 @@
+ce2b78d5bbbb6115b0ddd3111d98e354  ctc.int8.onnx
 d8d86f7d78db69e5b34dd558d546844d  ctc.onnx
 4fc077abd8c939b15c539878efc9c359  nrtr-decstep.onnx
 4d7a56a2b46235f7bd64b0254fd76e9d  nrtr-encoder.onnx
