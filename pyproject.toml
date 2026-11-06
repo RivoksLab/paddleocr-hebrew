@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=64"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,11 +8,13 @@ version = "0.1.0"
 description = "Hebrew OCR — PaddleOCR/SVTRv2 recognizers + a runnable page pipeline (word-DET + script-gated CTC->NRTR cascade)"
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
 authors = [{ name = "Rivok Labs" }]
 keywords = ["ocr", "hebrew", "paddleocr", "svtrv2", "rtl", "onnx", "bidi"]
 classifiers = [
-    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: Hebrew",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Topic :: Scientific/Engineering :: Image Recognition",
 ]
@@ -31,6 +33,7 @@ gpu = ["onnxruntime-gpu>=1.17"]
 [project.urls]
 Homepage = "https://github.com/RivoksLab/paddleocr-hebrew"
 Models = "https://huggingface.co/Rivok/paddleocr-hebrew"
+Issues = "https://github.com/RivoksLab/paddleocr-hebrew/issues"
 
 [tool.setuptools]
 packages = ["paddleocr_hebrew"]

@@ -3,7 +3,7 @@
 **Built by [Rivok Labs](https://rivoklabs.com)** — [rivoklabs.com](https://rivoklabs.com) · [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22163990.svg)](https://doi.org/10.5281/zenodo.22163990)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/LICENSE)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RivoksLab/paddleocr-hebrew/blob/main/examples/colab_quickstart.ipynb)
 
 Production-grade **Hebrew OCR** built on PaddleOCR — a family of finetuned
@@ -16,10 +16,10 @@ at **0.49% CER**) and embedded Latin/number runs inside RTL Hebrew that a plain
 CTC model silently drops.
 
 Every model here is a **finetune of a PaddleOCR model** (PaddleOCR v3.7.0,
-Apache-2.0) and is released under the same licence — see [NOTICE](NOTICE) and the
+Apache-2.0) and is released under the same licence — see [NOTICE](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/NOTICE) and the
 lineage column in [Models](#models) below. All reported CER figures are
 **in-house evaluation on our own test sets**: measured, but vendor-reported and
-not independently verified ([eval/EVAL_RESULTS.md](eval/EVAL_RESULTS.md)).
+not independently verified ([eval/EVAL_RESULTS.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/eval/EVAL_RESULTS.md)).
 
 > **Note on scope.** The Paddle training weights (`.pdparams`) and training
 > configs are **not** published — this is a release of inference-ready ONNX
@@ -37,7 +37,7 @@ correct and what you want for storing, searching, scoring, and training.
 **Only call `python-bidi`'s `get_display()` at the moment you render** to a
 terminal, PDF, or GUI. If you apply `get_display()` before storing or comparing,
 you silently corrupt your text and every downstream CER looks broken. This is the
-#1 way people get garbage out of Hebrew OCR. See [docs/charset.md](docs/charset.md).
+#1 way people get garbage out of Hebrew OCR. See [docs/charset.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/charset.md).
 
 ```python
 from bidi.algorithm import get_display
@@ -65,7 +65,7 @@ there — 38.9% on the Biblical Hebrew subset alone.
 Unvocalised Hebrew — which is the overwhelming majority of modern documents,
 signage, receipts, invoices, forms and press — is unaffected.
 
-See [docs/charset.md](docs/charset.md) for the full charset and the
+See [docs/charset.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/charset.md) for the full charset and the
 normalisation rules.
 
 ## ⚠️ And this — document typography only, not display faces
@@ -97,7 +97,24 @@ Two consequences worth planning around:
 **Nothing to install:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RivoksLab/paddleocr-hebrew/blob/main/examples/colab_quickstart.ipynb) runs the whole pipeline on a free
 Colab CPU runtime — read the sample page, then upload your own.
 
-Locally (Python 3.9 or later; developed and tested on 3.11):
+From PyPI (Python 3.9 or later; developed and tested on 3.11):
+
+```bash
+pip install paddleocr-hebrew huggingface_hub
+```
+
+```python
+from huggingface_hub import snapshot_download
+from paddleocr_hebrew import HebrewOCR
+
+models = snapshot_download("Rivok/paddleocr-hebrew",            # ~190 MB, cached after the first run
+                           allow_patterns=["config.json", "charset_v2f.txt", "word-det/*", "server-svtrv2/*"])
+ocr = HebrewOCR.word(models)
+for line in ocr.read("page.png")["lines"]:     # image or PDF
+    print(line["text"])                         # logical order (get_display() to show)
+```
+
+From source, with the examples:
 
 ```bash
 git clone https://github.com/RivoksLab/paddleocr-hebrew
@@ -125,7 +142,7 @@ for line in result["lines"]:
 Models are hosted on the **Hugging Face Hub**:
 [Rivok/paddleocr-hebrew](https://huggingface.co/Rivok/paddleocr-hebrew)
 (~370 MB, ONNX + per-model cards + md5sums). The small detectors and the mobile
-rec also ship in this repo under [`models/`](models/) for a zero-download start.
+rec also ship in this repo under [`models/`](https://github.com/RivoksLab/paddleocr-hebrew/tree/main/models/) for a zero-download start.
 
 ---
 
@@ -145,8 +162,8 @@ image / PDF page
 
 This **word-DET + single-pass** design beats line-level detection on Hebrew
 pages (see benchmark). The recognizer is in
-[`paddleocr_hebrew/plan_e_rec.py`](paddleocr_hebrew/plan_e_rec.py); the orchestrator in
-[`paddleocr_hebrew/pipeline.py`](paddleocr_hebrew/pipeline.py).
+[`paddleocr_hebrew/plan_e_rec.py`](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/paddleocr_hebrew/plan_e_rec.py); the orchestrator in
+[`paddleocr_hebrew/pipeline.py`](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/paddleocr_hebrew/pipeline.py).
 
 ### Two pipelines (same code + recognizer, different detector)
 
@@ -171,9 +188,9 @@ takes `--pipeline word|line`.
 ## Models
 
 All recognizers share one byte-identical 120-char charset
-([`models/charset_v2f.txt`](models/charset_v2f.txt)). Split-ONNX pairs
+([`models/charset_v2f.txt`](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/models/charset_v2f.txt)). Split-ONNX pairs
 (encoder + decstep) are one logical model — the attention decode loop runs on the
-host (see [docs/techniques.md](docs/techniques.md)).
+host (see [docs/techniques.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/techniques.md)).
 
 | model | role | arch | finetuned from | format / size |
 |---|---|---|---|---|
@@ -201,7 +218,7 @@ the CTC head, a quarter of the size with practically the same accuracy (within 0
 
 ## Benchmark (headline)
 
-Full tables + methodology + caveats in [eval/EVAL_RESULTS.md](eval/EVAL_RESULTS.md).
+Full tables + methodology + caveats in [eval/EVAL_RESULTS.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/eval/EVAL_RESULTS.md).
 
 **Clean rendered pure-Hebrew** (public-domain text, perfect GT), micro-CER:
 
@@ -220,14 +237,14 @@ vs our cascade/NRTR **2.33%** (~7× better).
 
 Tesseract narrowly wins *clean academic* Hebrew but loses badly on real domains
 (thermal 26% vs ~3%, menus 12% vs ~3%). Cross-domain robustness is the edge — see
-[docs/FINDINGS.md](docs/FINDINGS.md).
+[docs/FINDINGS.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/FINDINGS.md).
 
 ---
 
 ## What's novel here
 
 Two techniques we think are worth reusing (writeup in
-[docs/techniques.md](docs/techniques.md)):
+[docs/techniques.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/techniques.md)):
 
 1. **Attention decoder on ONNX-only edge via a host-driven split-ONNX loop.**
    A full NRTR decode loop won't export to ONNX (control flow) and Paddle won't
@@ -243,10 +260,10 @@ Two techniques we think are worth reusing (writeup in
 
 ## Documentation
 
-- [docs/charset.md](docs/charset.md) — the 120-char charset + the RTL logical-order rule
-- [docs/techniques.md](docs/techniques.md) — split-ONNX host loop, CTC-vs-attention, sliding-window, the cascade
-- [docs/FINDINGS.md](docs/FINDINGS.md) — what we learned (including the negative results)
-- [eval/EVAL_RESULTS.md](eval/EVAL_RESULTS.md) · [eval/run_eval.md](eval/run_eval.md) — benchmark + how to reproduce
+- [docs/charset.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/charset.md) — the 120-char charset + the RTL logical-order rule
+- [docs/techniques.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/techniques.md) — split-ONNX host loop, CTC-vs-attention, sliding-window, the cascade
+- [docs/FINDINGS.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/docs/FINDINGS.md) — what we learned (including the negative results)
+- [eval/EVAL_RESULTS.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/eval/EVAL_RESULTS.md) · [eval/run_eval.md](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/eval/run_eval.md) — benchmark + how to reproduce
 
 ## Used by
 
@@ -303,9 +320,9 @@ documents, we would like to hear about it.
 
 That DOI always resolves to the latest release. To cite this exact version, use
 `10.5281/zenodo.22163991`. GitHub's "Cite this repository" button reads
-[CITATION.cff](CITATION.cff).
+[CITATION.cff](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/CITATION.cff).
 
 ## License
 
 Apache-2.0 (code and model weights). The recognizers are finetuned from
-PaddleOCR models (also Apache-2.0); see [NOTICE](NOTICE). See [LICENSE](LICENSE).
+PaddleOCR models (also Apache-2.0); see [NOTICE](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/NOTICE). See [LICENSE](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/LICENSE).
