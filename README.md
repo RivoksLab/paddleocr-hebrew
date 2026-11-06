@@ -248,6 +248,15 @@ Two techniques we think are worth reusing (writeup in
 - [docs/FINDINGS.md](docs/FINDINGS.md) — what we learned (including the negative results)
 - [eval/EVAL_RESULTS.md](eval/EVAL_RESULTS.md) · [eval/run_eval.md](eval/run_eval.md) — benchmark + how to reproduce
 
+## Used by
+
+- [**HebrewOcrNet**](https://github.com/StasEdward/HebrewOcrNet) by Edward Stas: a C#/.NET
+  port of the word pipeline on ONNX Runtime and SkiaSharp, with no Python, on NuGet as
+  `HebrewOcrNet`. It reads the Hebrew documents in [Domeniq](https://www.domeniq.app), a
+  household paperwork ledger that runs at home.
+
+Built something on these models? Open an issue and we'll add it here.
+
 ## Fine-tuning & collaboration
 
 The models are released as **ONNX** — inference-ready and portable (CPU, CUDA,
