@@ -25,7 +25,7 @@ def resolve_models_dir(models_dir, pipeline):
     from huggingface_hub import snapshot_download
     det = "line-det/*" if pipeline == "line" else "word-det/*"
     return snapshot_download(repo_id=HF_REPO, allow_patterns=[
-        "charset_v2f.txt", det, "server-svtrv2/*",
+        "config.json", "charset_v2f.txt", det, "server-svtrv2/*",
     ])
 
 

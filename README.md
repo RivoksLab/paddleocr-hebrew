@@ -193,8 +193,8 @@ SVTRv2 is the long-line tool). Per-model details + numbers in each
 `MODEL_CARD.md`.
 
 **Smaller CTC option:** `server-svtrv2/ctc.int8.onnx` (20 MB) is an INT8-quantized copy of
-the CTC head, a quarter of the size with the same accuracy (within 0.05 CER points of
-`ctc.onnx` on every slice of 1,861 real line crops). It is a drop-in replacement:
+the CTC head, a quarter of the size with practically the same accuracy (within 0.2 CER points of
+`ctc.onnx` on every slice of 1,861 real line crops; 10.39% vs 10.42% overall). It is a drop-in replacement:
 `HebrewOCR(models_dir, ctc="server-svtrv2/ctc.int8.onnx")`.
 
 ---
