@@ -97,7 +97,7 @@ Two consequences worth planning around:
 **Nothing to install:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RivoksLab/paddleocr-hebrew/blob/main/examples/colab_quickstart.ipynb) runs the whole pipeline on a free
 Colab CPU runtime — read the sample page, then upload your own.
 
-Locally:
+Locally (Python 3.9 or later; developed and tested on 3.11):
 
 ```bash
 git clone https://github.com/RivoksLab/paddleocr-hebrew
