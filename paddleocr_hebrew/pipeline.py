@@ -24,7 +24,7 @@ import cv2
 import numpy as np
 
 from .detect import crop_bbox, detect_words
-from .heb_postprocess import cluster_rows, fix_geresh_yod_text, order_row, post_process
+from .heb_postprocess import cluster_rows, fix_geresh_yod_text, order_row, row_directions, post_process
 from .plan_e_rec import PlanECascade
 
 
@@ -140,8 +140,9 @@ class HebrewOCR:
 
         # assemble lines in reading order (logical Unicode order)
         lines = []
-        for row in cluster_rows(words):
-            ordered = order_row(row)
+        rows = cluster_rows(words)
+        for row, direction in zip(rows, row_directions(rows)):
+            ordered = order_row(row, direction)
             text = " ".join(w["text"] for w in ordered).strip()
             if self.geresh_yod:
                 text = fix_geresh_yod_text(text)
