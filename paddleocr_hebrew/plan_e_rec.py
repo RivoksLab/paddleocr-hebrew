@@ -29,6 +29,16 @@ import onnxruntime as ort
 
 from .rec_decode import ctc_greedy, load_dict, prep_dynamic_target_w, quantize_width
 
+
+def default_providers():
+    """CUDA first when this onnxruntime build has it, else CPU only.
+
+    Asking for CUDA on a CPU-only onnxruntime works, but prints a UserWarning on every
+    session; this asks only for what is available.
+    """
+    avail = ort.get_available_providers()
+    return [p for p in ("CUDAExecutionProvider", "CPUExecutionProvider") if p in avail] or ["CPUExecutionProvider"]
+
 # an embedded left-to-right run (digit or Latin) in the CTC output — the failure
 # mode CTC blank-collapses; presence of one triggers the NRTR fallback regardless
 # of confidence.
@@ -53,7 +63,7 @@ class PlanECascade:
     def __init__(self, ctc_onnx, enc_onnx, dec_onnx, dict_path,
                  conf_threshold=0.50, max_w=1280, maxlen=100,
                  batch_size=16, providers=None):
-        prov = providers or ['CUDAExecutionProvider', 'CPUExecutionProvider']
+        prov = providers or default_providers()
         self.ctc = ort.InferenceSession(ctc_onnx, providers=prov)
         self.enc = ort.InferenceSession(enc_onnx, providers=prov)
         self.dec = ort.InferenceSession(dec_onnx, providers=prov)

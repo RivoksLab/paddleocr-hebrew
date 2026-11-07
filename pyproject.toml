@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paddleocr-hebrew"
-version = "0.1.0"
+version = "0.1.1"
 description = "Hebrew OCR — PaddleOCR/SVTRv2 recognizers + a runnable page pipeline (word-DET + script-gated CTC->NRTR cascade)"
 readme = "README.md"
 requires-python = ">=3.9"

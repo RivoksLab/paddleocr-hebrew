@@ -11,7 +11,7 @@ from .heb_postprocess import (
     post_process, fix_geresh_yod_text, fix_geresh_yod_token, reading_order,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __all__ = [
     "HebrewOCR", "render_page", "PlanECascade",
     "post_process", "fix_geresh_yod_text", "fix_geresh_yod_token", "reading_order",
