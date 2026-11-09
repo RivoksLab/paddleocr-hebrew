@@ -1,6 +1,6 @@
 # paddleocr-hebrew
 
-**Built by [Rivok Labs](https://rivoklabs.com)** — [rivoklabs.com](https://rivoklabs.com) · [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
+**Built by [Rivok Labs](https://rivoklabs.com)** — **[Article and benchmarks](https://rivoklabs.com/research/hebrew-ocr)** · [ronen@rivoklabs.com](mailto:ronen@rivoklabs.com)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22163990.svg)](https://doi.org/10.5281/zenodo.22163990)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/LICENSE)
