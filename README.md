@@ -272,7 +272,8 @@ Two techniques we think are worth reusing (writeup in
   `HebrewOcrNet`. It reads the Hebrew documents in [Domeniq](https://www.domeniq.app), a
   household paperwork ledger that runs at home.
 
-Built something on these models? Open an issue and we'll add it here.
+Using paddleocr-hebrew in a project or product? We'd love to hear about it:
+[ronen@rivoklabs.com](mailto:ronen@rivoklabs.com), or open an issue, and we'll add it here.
 
 ## Fine-tuning & collaboration
 
@@ -326,3 +327,5 @@ That DOI always resolves to the latest release. To cite this exact version, use
 
 Apache-2.0 (code and model weights). The recognizers are finetuned from
 PaddleOCR models (also Apache-2.0); see [NOTICE](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/NOTICE). See [LICENSE](https://github.com/RivoksLab/paddleocr-hebrew/blob/main/LICENSE).
+
+If you use it, a credit or a link back to this repository is appreciated.
