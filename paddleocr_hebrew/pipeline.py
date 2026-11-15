@@ -92,7 +92,7 @@ class HebrewOCR:
                  providers=None,
                  det_thresh=0.40, det_unclip=1.3, det_max_side=1280,
                  dilate_w=0, dilate_h=0,
-                 conf_threshold=0.50,
+                 conf_threshold=0.50, split_long=80,
                  gershayim=True, geresh_yod=True):
         import onnxruntime as ort
         prov = providers or default_providers()
@@ -104,7 +104,7 @@ class HebrewOCR:
         self.det_inp = self.det_sess.get_inputs()[0].name
         self.rec = PlanECascade(mp(ctc), mp(nrtr_encoder), mp(nrtr_decstep),
                                 mp(charset), conf_threshold=conf_threshold,
-                                providers=prov)
+                                providers=prov, split_long=split_long)
         self.det_thresh = det_thresh
         self.det_unclip = det_unclip
         self.det_max_side = det_max_side

@@ -183,6 +183,14 @@ and, because the recognizer reads a whole line's BiDi in one pass, it keeps
 mixed Hebrew+Latin word order without post-hoc reordering. `quickstart.py`
 takes `--pipeline word|line`.
 
+**Long lines (since 0.1.2).** NRTR was trained on lines of up to 80 characters and
+loses its place on longer ones: it skips or repeats a stretch. When a crop going to
+NRTR has a CTC reading of 80 characters or more, the recognizer now cuts it at the
+emptiest column near its middle, reads each half, and joins the two in reading
+order. On 1,861 real line crops (production cascade, all lengths) CER went from
+8.17% to 7.27%; 109 crops were cut. Word crops are never that long, so `word`
+output does not change. To turn it off: `HebrewOCR.line(models_dir, split_long=0)`.
+
 ---
 
 ## Models
