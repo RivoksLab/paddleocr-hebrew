@@ -278,6 +278,10 @@ Two techniques we think are worth reusing (writeup in
 - [**docling-hebrew-ocr**](https://github.com/RivoksLab/docling-hebrew-ocr) (ours): a Hebrew
   OCR engine for [Docling](https://github.com/docling-project/docling), for scanned Hebrew
   documents and PDFs with a broken Hebrew text layer. `pip install docling-hebrew-ocr`.
+- [**ocrmypdf-hebrew**](https://github.com/RivoksLab/ocrmypdf-hebrew) (ours): an
+  [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) plugin. With `-l heb`, OCRmyPDF reads scanned
+  PDFs with these models in place of Tesseract and adds a searchable Hebrew text layer.
+  `pip install ocrmypdf-hebrew`.
 - [**HebrewOcrNet**](https://github.com/StasEdward/HebrewOcrNet) by Edward Stas: a C#/.NET
   port of the word pipeline on ONNX Runtime and SkiaSharp, with no Python, on NuGet as
   `HebrewOcrNet`. It reads the Hebrew documents in [Domeniq](https://www.domeniq.app), a
